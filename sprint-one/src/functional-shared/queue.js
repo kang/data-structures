@@ -3,12 +3,12 @@
 
 //   // Use an object with numeric keys to store values
 //   var storage = {};
-//   var size = 0;
+//   var _size = 0;
 //   // Implement the methods below
 
 //   instance.enqueue = function(value){
-//     storage[size]=value;
-//     size++;
+//     storage[size]=v
+
 //   };
 
 //   instance.dequeue = function(){
@@ -27,33 +27,33 @@
 
 var makeQueue = function(){
   var instance = {};
-  var storage = {};
-  var size = 0;
+  instance._storage = {};
+  instance._size = 0;
+  instance._removed = 0;
+
   extend(instance, queueMethods);
+
   return instance;
 };
 
-var extend = function(to, from){
-  for(var key in from){
-    to[key]=from[key];
-  }
-};
-
-
 var queueMethods = {};
 
-queueMethods.dequeue = function(){
-    var queue = Object.keys(this.storage);
-    var result = this.storage[queue[0]];
-    delete this.storage[queue[0]];
-    return result;
-  };
 
 queueMethods.enqueue = function(value){
-    this.storage[this.size]=value;
-    this.size++;
+  this._storage[this._size] = value;
+  this._size++;
+};
+
+queueMethods.dequeue = function(){
+  // var queue = Object.keys(this._storage);
+  var result = this._storage[this._removed];
+  delete this._storage[this._removed];
+  if(this._size-this._removed){
+    this._removed++;
+  }
+  return result;
 };
 
 queueMethods.size = function(){
-    return Object.keys(this.storage).length;
+  return this._size-this._removed;
 };
