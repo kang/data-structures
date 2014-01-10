@@ -15,6 +15,9 @@ var makeLinkedList = function(){
     }
   };
 
+  list.addToHead = function(value){
+  };
+
   list.removeHead = function(){
     var tmp;
     if(list.head.next){

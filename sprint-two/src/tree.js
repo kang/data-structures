@@ -37,7 +37,6 @@ treeMethods.contains = function(target){
         return true;
       }
       if(node[i].children){
-        console.log(node.children);
         if(travAndCheck(node[i].children)){
           return true;
         }
