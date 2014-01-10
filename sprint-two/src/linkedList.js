@@ -25,16 +25,19 @@ var makeLinkedList = function(){
   };
 
   list.contains = function(target, node){
-    var doesContain = false;
-    for(var objs in list){
-      for(var nodes in objs){
-        if(nodes===target){
-          doesContain=true;
-        }
+    node = node || list.head;
+    if(node.value===target){
+      console.log("true!!");
+      return true;
+    } else {
+      if(node.next===null){
+        return false;
       }
+      return list.contains(target, node.next);
     }
-    return doesContain;
+    console.log("false!!!");
   };
+
   return list;
 };
 
