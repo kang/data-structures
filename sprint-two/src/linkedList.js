@@ -27,7 +27,6 @@ var makeLinkedList = function(){
   list.contains = function(target, node){
     node = node || list.head;
     if(node.value===target){
-      console.log("true!!");
       return true;
     } else {
       if(node.next===null){
@@ -35,7 +34,6 @@ var makeLinkedList = function(){
       }
       return list.contains(target, node.next);
     }
-    console.log("false!!!");
   };
 
   return list;
