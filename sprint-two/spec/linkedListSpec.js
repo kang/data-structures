@@ -17,6 +17,8 @@ describe("linkedList", function() {
     expect(linkedList.addToTail).to.be.a('function');
     expect(linkedList.removeHead).to.be.a('function');
     expect(linkedList.contains).to.be.a('function');
+    expect(linkedList.addToHead).to.be.a('function');
+    expect(linkedList.removeTail).to.be.a('function');
   });
 
   it("should designate a new tail when new nodes are added", function(){
