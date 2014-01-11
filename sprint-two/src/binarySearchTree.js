@@ -26,8 +26,17 @@ makeBinarySearchTree.prototype.insert = function(newVal){
   // return locatePos(this);
 };
 
-makeBinarySearchTree.prototype.depthFirstLog = function(){
-
+makeBinarySearchTree.prototype.depthFirstLog = function(callback){
+  var travAndApply = function(node){
+    callback(node._value);
+    if(node._right){
+      travAndApply(node._right);
+    }
+    if(node._left){
+      travAndApply(node._left);
+    }
+  };
+  travAndApply(this);
 };
 
 
