@@ -5,28 +5,25 @@ var makeBinarySearchTree = function(value){
 };
 
 makeBinarySearchTree.prototype.insert = function(newVal){
-  
-  var locatePos = function(pos){
+
+  // var locatePos = function(pos){
     // console.log(pos);
-    if(newVal > pos._value){
-      if(pos._right){
-        return locatePos(pos._right);
+    if(newVal > this._value){
+      if(this._right){
+        this._right.insert(newVal);
       } else {
-        pos._right = new makeBinarySearchTree(newVal);
-        console.log(pos);
+        this._right = new makeBinarySearchTree(newVal);
       }
-    } else if (newVal < pos._value){
-      if(pos._left){
-        return locatePos(pos._left);
+    } else if (newVal < this._value){
+      if(this._left){
+        this._left.insert(newVal);
       } else {
-        console.log('Yay');
-        pos._left = new makeBinarySearchTree(newVal);
-        console.log(pos);
+        this._left = new makeBinarySearchTree(newVal);
       }
     }
 
-  };
-  return locatePos(this);
+  // };
+  // return locatePos(this);
 };
 
 makeBinarySearchTree.prototype.depthFirstLog = function(){
@@ -36,18 +33,19 @@ makeBinarySearchTree.prototype.depthFirstLog = function(){
 
 
 makeBinarySearchTree.prototype.contains = function(target){
-  var travAndCheck = function(node){
-    for(var i = 0; i<node.length; i++){
-      if(node[i].value===target){
-        return true;
-      }
-      if(node[i].children){
-        if(travAndCheck(node[i].children)){
-          return true;
-        }
-      }
+  if(target === this._value){
+    return true;
+  } else if(target > this._value){
+    if(this._right){
+      return this._right.contains(target);
+    } else {
+      return false;
     }
-    return false;
-  };
-  return travAndCheck(this.children);
+  } else if (target < this._value){
+    if(this._left){
+      return this._left.contains(target);
+    } else {
+      return false;
+    }
+  }
 };
