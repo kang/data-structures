@@ -7,7 +7,7 @@ var HashTable = function(){
 HashTable.prototype.insert = function(k, v){
   var i = getIndexBelowMaxForKey(k, this._limit);
   this._stored++;
-  if(this._stored > this._limit-2){
+  if(this._stored > this._limit*3/4){
     this._limit = this._limit * 2;
   }
   if(Array.isArray(this._storage.get(i))){
@@ -30,7 +30,7 @@ HashTable.prototype.retrieve = function(k){
 
 HashTable.prototype.remove = function(k){
   var i = getIndexBelowMaxForKey(k, this._limit);
-  if(this._limit/2 -1> this._stored){
+  if(this._stored < this._limit/4){
     this._limit = this._limit/2;
   }
   this._stored--;

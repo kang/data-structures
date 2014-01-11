@@ -16,6 +16,18 @@ var extend = function(to, from){
 
 var treeMethods = {};
 
+treeMethods.traverse = function(callback){
+    var travAndCall = function(node){
+    for(var i = 0; i<node.length; i++){
+      callback.apply(node[i], arguments);
+      if(node[i].children){
+        travAndCall(node[i].children);
+      }
+    }
+  };
+  travAndCall(this.children);
+};
+
 treeMethods.removeFromParent = function(){
   for(var j = 0; j<this.parent.children.length; j++){
     if(this.parent.children[j].value===this.value){

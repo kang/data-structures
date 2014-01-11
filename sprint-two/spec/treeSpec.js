@@ -44,4 +44,17 @@ describe("tree", function() {
     assert.isTrue(tree.contains(8));
   });
 
+    it("add 5", function(){
+    tree.addChild(5);
+    tree.addChild(6);
+    tree.children[0].addChild(7);
+    tree.children[1].addChild(8);
+    tree.traverse(function(){
+      this.value = this.value +5;
+      return this.value;
+    });
+    expect(tree.children[0].value).to.equal(10);
+    expect(tree.children[0].children[0].value).to.equal(12);
+  });
+
 });
