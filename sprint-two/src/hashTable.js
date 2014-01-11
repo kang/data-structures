@@ -39,6 +39,5 @@ HashTable.prototype.remove = function(k){
       delete this._storage.get(i)[x][1];
     }
   }
-  console.log(this);
 };
 
