@@ -1,10 +1,10 @@
-var assert = chai.assert; 
+var assert = chai.assert;
 
 describe("binarySearchTree", function() {
   var binarySearchTree;
 
   beforeEach(function() {
-    binarySearchTree = makeBinarySearchTree(5);
+    binarySearchTree = new makeBinarySearchTree(5);
   });
 
   it("should have methods named 'insert', 'contains', and 'depthFirstLog", function() {

@@ -30,7 +30,12 @@ var makeLinkedList = function(){
   };
 
   list.removeTail = function(value){
-
+    var tmp;
+    if(list.tail.previous){
+      tmp = list.tail.previous;
+    }
+    delete list.tail;
+    list.tail = tmp;
   };
 
   list.removeHead = function(){
